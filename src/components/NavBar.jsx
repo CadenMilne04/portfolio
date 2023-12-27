@@ -2,7 +2,8 @@ import React from 'react'
 
 function NavBar() {
   return (
-    <div className='grid grid-cols-2 h-20 px-6'>
+
+    <nav className='grid grid-cols-2 h-20 px-6 fixed top-0 w-full z-10'>
         <div className='flex justify-start'>
             <h4 className=' text-2xl my-auto font-extrabold'>
                 Welcome 👋
@@ -31,7 +32,8 @@ function NavBar() {
             </button>
         </div>
 
-    </div>
+    </nav>
+
   )
 }
 

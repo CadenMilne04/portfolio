@@ -19,7 +19,7 @@ function Hero() {
     }
 
   return (
-    <div className='grid grid-cols-2 gap-4 p-8 h-96 px-12'>
+    <div className='grid grid-cols-2 gap-4 p-8 h-96 px-12' style={{height: "92vh"}}>
         <div className='flex justify-center align-middle m-auto'>
             <div className='align-middle'>
                 <h1 className='text-6xl font-extrabold'>Caden Milne</h1>
