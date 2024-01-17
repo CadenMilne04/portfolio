@@ -4,7 +4,7 @@ function About() {
   return (
     <div className='flex flex-col w-full'>
         <h1 className='m-auto my-6 font-bold text-3xl'>👇 About Me 👇</h1>
-        <div className='grid grid-cols-1 sm:grid-cols-2'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 mb-6'>
             <img className="w-96 m-auto" src="/headshot.png" alt="" />
             <div className='p-5 flex flex-col justify-center'>
                 <h1 className='m-2 text-lg font-semibold'>👋 Hello! My name is Caden Milne!</h1>
