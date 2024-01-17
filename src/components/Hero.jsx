@@ -23,7 +23,10 @@ function Hero() {
         <div className='flex justify-center align-middle m-auto'>
             <div className='align-middle'>
                 <h1 className='text-6xl font-extrabold'>Caden Milne</h1>
-                <h2 className='text-4xl font-bold text-blue-600'>Software Engineer</h2>
+                <h2 className='mb-3 text-4xl font-bold text-blue-600'>Software Engineer</h2>
+                <a target="_blank" href="https://drive.google.com/file/d/1thxtuJBt7eeQfPwnUbuvKFHfWNKXsca1/view?usp=sharing" className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'>
+                    View My Resume
+                </a>
             </div>
        </div>
         <div className='sm:h-full'>
