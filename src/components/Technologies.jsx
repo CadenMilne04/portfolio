@@ -21,8 +21,8 @@ function Technologies() {
 
 
   return (
-    <div ref={scrollRef} style={{ overflow: "scroll" }} className='flex flex-col justify-center align-middle'>
-      <h1 className='m-auto mb-12 font-bold text-3xl'>👇 Technologies 👇</h1>
+    <div ref={scrollRef} style={{ overflow: "" }} className='flex flex-col justify-center align-middle'>
+      <h1 className='m-auto mb-12 font-bold text-3xl'>👇 Skills 👇</h1>
       
       <motion.div
         initial="offscreen"
@@ -32,7 +32,7 @@ function Technologies() {
         <motion.div variants={v} className='flex flex-col pb-12 justify-center align-middle'>
         <h1 className='m-auto font-semibold text-2xl'>Languages</h1>
 
-          <div className='m-auto mt-8 w-1/2 flex flex-wrap justify-between'>
+          <div className='m-auto mt-8 w-1/2 flex flex-wrap justify-center gap-5'>
             <img className='m-auto' width="80" src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java" title="Java"/>
             <img className='m-auto' width="80" src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" alt="JavaScript" title="JavaScript"/>
             <img className='m-auto' width="80" src="https://user-images.githubusercontent.com/25181517/192106070-46255bcf-65e6-4c6b-a296-bf8d0d8fb2a7.png" alt="C" title="C"/>
@@ -48,7 +48,7 @@ function Technologies() {
         <motion.div variants={v} className='flex flex-col pb-12 justify-center align-middle'>
           <h1 className='m-auto font-semibold text-2xl'>Web Development Tools</h1>
 
-          <div className='m-auto mt-8 w-3/4 flex flex-wrap justify-between'>
+          <div className='m-auto mt-8 w-3/4 flex flex-wrap justify-center gap-5'>
             <img width="80" src="https://user-images.githubusercontent.com/25181517/192107858-fe19f043-c502-4009-8c47-476fc89718ad.png" alt="REST" title="REST"/>
             <img width="80" src="https://user-images.githubusercontent.com/25181517/183898054-b3d693d4-dafb-4808-a509-bab54cf5de34.png" alt="Bootstrap" title="Bootstrap"/>
             <img width="80" src="https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png" alt="Tailwind CSS" title="Tailwind CSS"/>
@@ -70,7 +70,7 @@ function Technologies() {
         <motion.div variants={v} className='flex flex-col pb-12 justify-center align-middle'>
           <h1 className='m-auto font-semibold text-2xl'>Other Tools</h1>
 
-          <div className='m-auto mt-8 w-3/4 flex flex-wrap justify-between'>
+          <div className='m-auto mt-8 w-3/4 flex flex-wrap justify-center gap-5'>
             <img width="80" src="https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png" alt="Git" title="Git"/>
             <img width="80" src="https://user-images.githubusercontent.com/25181517/192108889-232b3431-a585-4b36-a62d-9078bd3641d9.png" alt="Vim" title="Vim"/>
             <img width="80" src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman" title="Postman"/>
