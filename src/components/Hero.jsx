@@ -19,7 +19,7 @@ function Hero() {
     }
 
   return (
-    <div className='grid grid-cols-1 gap-4 p-8 px-12 sm:grid-cols-2  mt-20' style={{height: '84vh'}}>
+    <div className='grid grid-cols-1 gap-4 p-8 px-12 sm:grid-cols-2 mt-20 ' style={{height: '84vh'}}>
         <div className='flex justify-center align-middle m-auto'>
             <div className='align-middle'>
                 <h1 className='text-6xl font-extrabold'>Caden Milne</h1>
@@ -29,9 +29,9 @@ function Hero() {
                 </a>
             </div>
        </div>
-        <div className='sm:h-full'>
+        <div className='sm:h-full cursor-grab' onWheel={(e) => {e.target.blur()}}>
             <Canvas>
-                {/* <OrbitControls /> */}
+                <OrbitControls enableZoom={false}/>
                 <ambientLight intensity={.8} />
                 <spotLight position={[1, 0, 0]} angle={0.15} penumbra={1} />
                 <pointLight position={[2, 1, 1]} />
