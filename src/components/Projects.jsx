@@ -12,6 +12,7 @@ function Projects() {
                 img="/WorkoutAppImage.png"
                 logos={["https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png","https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png","https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png", "https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png",]}
                 link="https://workout-app-ugjg.onrender.com/"
+                host='/GitHubLogo.png'
             />
            <Card
                 name = 'Dopa-Mirror'
@@ -19,6 +20,7 @@ function Projects() {
                 img="/MyDopaMirrorImage.png"
                 logos={["https://user-images.githubusercontent.com/25181517/183423507-c056a6f9-1ba8-4312-a350-19bcbc5a8697.png", "https://github.com/marwin1991/profile-technology-icons/assets/76662862/2481dc48-be6b-4ebb-9e8c-3b957efe69fa"]}
                 link="https://www.youtube.com/watch?v=0eU8fmNTzb4&ab_channel=CadenMilne"
+                host='/YouTubeLogo.png'
             />        
             <Card
                 name = '"Braille" Phone'
@@ -26,13 +28,15 @@ function Projects() {
                 img="/MyBlindPhoneImage.png"
                 logos={["https://user-images.githubusercontent.com/25181517/183423507-c056a6f9-1ba8-4312-a350-19bcbc5a8697.png", "https://github.com/marwin1991/profile-technology-icons/assets/76662862/2481dc48-be6b-4ebb-9e8c-3b957efe69fa"]}
                 link="https://www.youtube.com/watch?v=p1zOldm9Yd4&ab_channel=CadenMilne"
+                host='/YouTubeLogo.png'
             />
             <Card
                 name = "My Shell"
-                desc = "Linux shell written in C which can and execute user binaries and load custom plugins."
+                desc = "Linux shell written in C which runs custom plugins and user binaries."
                 img="/MyShellImage.png"
                 logos={["https://user-images.githubusercontent.com/25181517/192106070-46255bcf-65e6-4c6b-a296-bf8d0d8fb2a7.png", "https://github.com/marwin1991/profile-technology-icons/assets/76662862/2481dc48-be6b-4ebb-9e8c-3b957efe69fa"]}
                 link="https://github.com/CadenMilne04/my_shell"
+                host='/GitHubLogo.png'
             />
             <Card
                 name = "My Malloc"
@@ -40,6 +44,7 @@ function Projects() {
                 img="/MyMallocImage.png"
                 logos={["https://user-images.githubusercontent.com/25181517/192106070-46255bcf-65e6-4c6b-a296-bf8d0d8fb2a7.png", "https://github.com/marwin1991/profile-technology-icons/assets/76662862/2481dc48-be6b-4ebb-9e8c-3b957efe69fa"]}
                 link="https://github.com/CadenMilne04/my_malloc"
+                host='/GitHubLogo.png'
             />
         </div>
         

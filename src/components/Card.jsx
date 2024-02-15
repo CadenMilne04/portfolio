@@ -13,7 +13,10 @@ function Card(props) {
                         return <img width="40" src={item}/>
                     })}
 	            </div>
-                <p className='m-auto ml-2 text-sm text-gray-400'>Click to learn more!</p>
+                <div className='flex align-middle mb-0.5 p-0'>
+                    <p className='m-0 ml-2 p-0 pt-0.5 align-middle text-sm text-gray-400'>Click to see more on: </p>
+                    <img className="m-0 ml-2 w-6 align-middle" src={props.host} alt="" />
+                </div>
             </div>
         </a>
     </div>
