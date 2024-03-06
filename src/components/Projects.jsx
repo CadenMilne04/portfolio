@@ -23,6 +23,14 @@ function Projects() {
                 host='/YouTubeLogo.png'
             />        
             <Card
+                name = "'C'rappy Bird"
+                desc = "Fully functional flappy bird clone that runs on my custom graphics library without using C Standard Library."
+                img="/CrappyBirdImage.png"
+                logos={["https://user-images.githubusercontent.com/25181517/192106070-46255bcf-65e6-4c6b-a296-bf8d0d8fb2a7.png", "https://github.com/marwin1991/profile-technology-icons/assets/76662862/2481dc48-be6b-4ebb-9e8c-3b957efe69fa"]}
+                link="https://github.com/CadenMilne04/crappy-bird"
+                host='/GitHubLogo.png'
+            />
+            <Card
                 name = '"Braille" Phone'
                 desc = "Audio based phone designed for the blind. Built with rPI and python + Twilio API."
                 img="/MyBlindPhoneImage.png"
