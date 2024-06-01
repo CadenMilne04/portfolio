@@ -8,8 +8,9 @@ function About() {
             <img className="w-96 m-auto" src="/headshot.png" alt="" />
             <div className='p-5 flex flex-col justify-center'>
                 <h1 className='m-2 text-2xl font-semibold'>👋 Hello! My name is Caden Milne!</h1>
-                <h1 className='m-2 text-2xl font-semibold'>👨‍🎓 I am a studying Computer Science at the <span className='text-blue-600'>University of Pittsburgh</span>.</h1>
-                <h1 className='m-2 text-2xl font-semibold'>🙋‍♂️I am <span className='text-blue-600'>highly motivated</span>. I strive to <span className='text-blue-600'>make an impact</span> on any team that I work with.</h1>
+                <h1 className='m-2 text-2xl font-semibold'>💼 Intern at Carnegie Mellon's Software Engineering Institute</h1>
+                <h1 className='m-2 text-2xl font-semibold'>👨‍🎓 Studying Computer Science at the <span className='text-blue-600'>University of Pittsburgh</span>.</h1>
+                <h1 className='m-2 text-2xl font-semibold'>🙋‍♂️<span className='text-blue-600'>Highly motivated</span>, I strive to <span className='text-blue-600'>make an impact</span> on any team that I work with.</h1>
             </div>
         </div>
     </div>
