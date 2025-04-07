@@ -13,7 +13,7 @@ function NavBar(props) {
     <nav className='grid grid-cols-2 h-20 bg-white shadow-md rounded-b-lg px-6 fixed top-0 w-full z-10'>
         <div className='flex justify-start'>
             <h4 className=' text-2xl my-auto font-extrabold'>
-                Welcome 👋
+                {"</>"} Caden Milne - SWE
             </h4>
         </div>
 
