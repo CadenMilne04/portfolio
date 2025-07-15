@@ -13,16 +13,6 @@
         "host": "/TriviaTokLogo.png"
     },
     {
-        "name": "NES Emulator",
-        "desc": "Nintendo Entertainment System emulator. Which emulates the 6502 processor, ppu, and I/O.",
-        "img": "/NesEmuImage.png",
-        "logos": [
-            "https://user-images.githubusercontent.com/25181517/192599922-3a8ceb1c-ff1d-40bc-b73c-99ea1182d8ad.png"
-        ],
-        "link": "https://github.com/CadenMilne04/nes_emulator",
-        "host": "/GitHubLogo.png"
-    },
-    {
         "name": "Workout App",
         "desc": "Web application with active users to track workout data.",
         "img": "/WorkoutAppImage.png",
@@ -33,6 +23,16 @@
             "https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png"
         ],
         "link": "https://workout-app-ugjg.onrender.com/",
+        "host": "/GitHubLogo.png"
+    },
+    {
+        "name": "NES Emulator",
+        "desc": "Nintendo Entertainment System emulator. Which emulates the 6502 processor, ppu, and I/O.",
+        "img": "/NesEmuImage.png",
+        "logos": [
+            "https://user-images.githubusercontent.com/25181517/192599922-3a8ceb1c-ff1d-40bc-b73c-99ea1182d8ad.png"
+        ],
+        "link": "https://github.com/CadenMilne04/nes_emulator",
         "host": "/GitHubLogo.png"
     },
     {
@@ -51,7 +51,7 @@
         "desc": "Fully functional flappy bird clone that runs on my custom graphics library without using C Standard Library.",
         "img": "/CrappyBirdImage.png",
         "logos": [
-            "https://user-images.githubusercontent.com/25181517/192106070-46225bcf-65e6-4c6b-a296-bf8d0d8fb2a7.png",
+            "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png",
             "https://github.com/marwin1991/profile-technology-icons/assets/76662862/2481dc48-be6b-4ebb-9e8c-3b957efe69fa"
         ],
         "link": "https://github.com/CadenMilne04/crappy-bird",
@@ -73,7 +73,7 @@
         "desc": "Linux shell written in C which runs custom plugins and user binaries.",
         "img": "/MyShellImage.png",
         "logos": [
-            "https://user-images.githubusercontent.com/25181517/192106070-46225bcf-65e6-4c6b-a296-bf8d0d8fb2a7.png",
+            "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png",
             "https://github.com/marwin1991/profile-technology-icons/assets/76662862/2481dc48-be6b-4ebb-9e8c-3b957efe69fa"
         ],
         "link": "https://github.com/CadenMilne04/my_shell",
@@ -84,7 +84,7 @@
         "desc": "Custom implementation of C's malloc written in C.",
         "img": "/MyMallocImage.png",
         "logos": [
-            "https://user-images.githubusercontent.com/25181517/192106070-46225bcf-65e6-4c6b-a296-bf8d0d8fb2a7.png",
+            "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png",
             "https://github.com/marwin1991/profile-technology-icons/assets/76662862/2481dc48-be6b-4ebb-9e8c-3b957efe69fa"
         ],
         "link": "https://github.com/CadenMilne04/my_malloc",

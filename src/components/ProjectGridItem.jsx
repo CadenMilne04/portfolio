@@ -30,27 +30,36 @@ function ProjectGridItem({ project, status, isHighlighted }) {
     };
 
     const getStatusBadge = () => {
-        const badgeClasses = "flex items-center justify-center space-x-2 px-3 py-2 rounded-full text-sm font-medium";
-
-        // Simplified color scheme: green for available, yellow for issues, red for down
-        if (status.status === 'healthy' || status.status === 'static' || status.status === 'demo') {
+        if (status.status === 'healthy') {
             return (
-                <div className={`${badgeClasses} bg-green-100 text-green-800 border border-green-200`}>
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
+                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
                     <span>Live</span>
+                </div>
+            );
+        } else if (status.status === 'static') {
+            return (
+                <div className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                    <span>App</span>
+                </div>
+            );
+        } else if (status.status === 'demo') {
+            return (
+                <div className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                    <span>Demo</span>
                 </div>
             );
         } else if (status.status === 'warning') {
             return (
-                <div className={`${badgeClasses} bg-yellow-100 text-yellow-800 border border-yellow-200`}>
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                <div className="flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 border border-yellow-200">
+                    <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
                     <span>Issues</span>
                 </div>
             );
         } else {
             return (
-                <div className={`${badgeClasses} bg-red-100 text-red-800 border border-red-200`}>
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                <div className="flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 border border-red-200">
+                    <div className="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
                     <span>Down</span>
                 </div>
             );
@@ -83,13 +92,69 @@ function ProjectGridItem({ project, status, isHighlighted }) {
 
     return (
         <div
-            className={`px-6 py-4 cursor-pointer transition-all duration-200 ${isHighlighted ? 'bg-blue-50 border-l-4 border-blue-400' : 'hover:bg-gray-50'
-                } ${isHovered ? 'shadow-lg scale-[1.01]' : ''}`}
+            className={`px-4 lg:px-6 py-4 cursor-pointer transition-all duration-200 hover:bg-gray-50 ${isHovered ? 'shadow-lg scale-[1.01]' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => window.open(project.link, '_blank')}
         >
-            <div className="grid grid-cols-12 gap-6 items-center">
+            {/* Mobile Layout */}
+            <div className="lg:hidden">
+                {/* Mobile Content Row */}
+                <div className="flex items-stretch space-x-3 h-20">
+                    {/* Full-height Project Thumbnail */}
+                    <div className="w-32 flex-shrink-0">
+                        <img
+                            src={project.img}
+                            alt={project.name}
+                            className="w-full h-full object-cover rounded border border-gray-200"
+                        />
+                    </div>
+                    
+                    {/* Content Column */}
+                    <div className="flex-1 flex flex-col justify-between py-1">
+                        {/* Title and Status Row */}
+                        <div className="flex items-start justify-between">
+                            <div className="flex-1 min-w-0 pr-2">
+                                <h3 className={`text-base font-bold transition-all duration-200 leading-tight ${
+                                    isHovered 
+                                        ? 'text-blue-600 transform scale-105' 
+                                        : 'text-blue-700 hover:text-blue-600'
+                                }`}>
+                                    {project.name} ↗
+                                </h3>
+                                <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed mt-0.5">
+                                    {project.desc}
+                                </p>
+                            </div>
+                            
+                            {/* Status Badge */}
+                            <div className="flex-shrink-0">
+                                {getStatusBadge()}
+                            </div>
+                        </div>
+                        
+                        {/* Tech Stack */}
+                        <div className="flex flex-wrap gap-1 mt-2">
+                            {project.logos && project.logos.slice(0, 4).map((logo, i) => (
+                                <img
+                                    key={i}
+                                    src={logo}
+                                    alt="Technology"
+                                    className="w-4 h-4 rounded"
+                                />
+                            ))}
+                            {project.logos && project.logos.length > 4 && (
+                                <div className="w-4 h-4 rounded bg-gray-200 flex items-center justify-center text-xs font-medium text-gray-600">
+                                    +{project.logos.length - 4}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="hidden lg:grid lg:grid-cols-10 gap-6 items-center">
                 {/* Status Column */}
                 <div className="col-span-1 flex justify-center">
                     {getStatusBadge()}
@@ -108,17 +173,7 @@ function ProjectGridItem({ project, status, isHighlighted }) {
                         <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
                             {project.desc}
                         </p>
-                        {isHighlighted && (
-                            <div className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
-                                ⭐ Featured
-                            </div>
-                        )}
                     </div>
-                </div>
-
-                {/* Performance Column */}
-                <div className="col-span-2">
-                    {getPerformanceMetrics()}
                 </div>
 
                 {/* Tech Stack Column */}
@@ -163,13 +218,6 @@ function ProjectGridItem({ project, status, isHighlighted }) {
                                     : 'border-gray-200 hover:border-blue-300 hover:shadow-md'
                                 }`}
                         />
-                        {isHovered && (
-                            <div className="absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent rounded-lg flex items-end justify-center pb-2">
-                                <span className="text-white text-xs font-semibold bg-black/50 px-2 py-1 rounded">
-                                    Click to View
-                                </span>
-                            </div>
-                        )}
                         {/* Add a subtle glow effect */}
                         <div className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${
                             isHovered ? 'opacity-100' : 'opacity-0'
