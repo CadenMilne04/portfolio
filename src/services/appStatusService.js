@@ -79,9 +79,9 @@ export const getStatusColor = (status) => {
     case 'static':
       return 'text-blue-500';
     case 'demo':
-      return 'text-gray-500';
+      return 'text-purple-500';
     default:
-      return 'text-gray-400';
+      return 'text-gray-500';
   }
 };
 

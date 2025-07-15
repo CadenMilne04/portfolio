@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { getApplicationStatuses, getStatusColor, getStatusIcon } from '../services/appStatusService';
+import { getApplicationStatuses } from '../services/appStatusService';
 import projectsData from '../projects.json';
+import ProjectsList from './ProjectsList';
+import GitHubHeatmap from './GitHubHeatmap';
 
 function Dashboard() {
     const [appStatuses, setAppStatuses] = useState({});
     const [loading, setLoading] = useState(true);
     const [lastRefresh, setLastRefresh] = useState(new Date());
+    const [aboutTooltip, setAboutTooltip] = useState(null);
 
     useEffect(() => {
         loadAppStatuses();
@@ -35,6 +38,80 @@ function Dashboard() {
         return appStatuses[projectName] || { status: 'unknown', uptime: 'N/A', responseTime: 'N/A' };
     };
 
+    const handleAboutHover = (item, event) => {
+        setAboutTooltip({
+            x: event.clientX,
+            y: event.clientY,
+            content: item.tooltip,
+            thumbnail: item.thumbnail
+        });
+    };
+
+    const handleAboutMove = (event) => {
+        if (aboutTooltip) {
+            setAboutTooltip(prev => ({
+                ...prev,
+                x: event.clientX,
+                y: event.clientY
+            }));
+        }
+    };
+
+    const handleAboutLeave = () => {
+        setAboutTooltip(null);
+    };
+
+    const aboutItems = [
+        {
+            text: "University of Pittsburgh",
+            colors: "text-gray-800 font-bold drop-shadow-lg shadow-blue-400",
+            hoverColors: "hover:drop-shadow-xl hover:shadow-blue-500 hover:-translate-y-0.5 transition-all duration-200",
+            link: "https://www.pitt.edu/",
+            tooltip: "Started my Computer Science journey at Pitt, diving deep into algorithms, data structures, and software engineering fundamentals. Built a strong foundation in programming while getting involved in the vibrant tech community.",
+            thumbnail: "/pitt_tooltip.png"
+        },
+        {
+            text: "Carnegie Mellon's Software Engineering Institute",
+            colors: "text-gray-800 font-bold drop-shadow-lg shadow-red-400",
+            hoverColors: "hover:drop-shadow-xl hover:shadow-red-500 hover:-translate-y-0.5 transition-all duration-200",
+            link: "https://insights.sei.cmu.edu/blog/a-5-stage-process-for-automated-testing-and-delivery-of-complex-software-systems/",
+            tooltip: "Spent 2024 as a Software Engineer Intern developing cutting-edge automated testing frameworks for complex software systems. Contributed to mission-critical research that helps organizations deliver reliable software at scale and published a blog post about it.",
+            thumbnail: "/sei_tooltip.png"
+        },
+        {
+            text: "published a blog post",
+            colors: "text-gray-800 font-bold drop-shadow-lg shadow-red-400",
+            hoverColors: "hover:drop-shadow-xl hover:shadow-red-500 hover:-translate-y-0.5 transition-all duration-200",
+            link: "https://insights.sei.cmu.edu/blog/a-5-stage-process-for-automated-testing-and-delivery-of-complex-software-systems/",
+            tooltip: "Published research on DevOps and automating software updates - a comprehensive 5-stage process for automated testing and delivery of complex software systems at enterprise scale.",
+            thumbnail: "/cmublog_thumbnail.png"
+        },
+        {
+            text: "Bank of New York",
+            colors: "text-gray-800 font-bold drop-shadow-lg shadow-blue-600",
+            hoverColors: "hover:drop-shadow-xl hover:shadow-blue-700 hover:-translate-y-0.5 transition-all duration-200",
+            link: "https://www.bny.com/",
+            tooltip: "Currently serving as Summer 2025 Software Engineering Intern, working on enterprise-scale financial systems that handle billions in transactions. Building robust, secure applications for one of the world's oldest financial institutions.",
+            thumbnail: "/bny_tooltip.jpeg"
+        },
+        {
+            text: "SteelHacks XI",
+            colors: "text-gray-800 font-bold drop-shadow-lg shadow-yellow-400",
+            hoverColors: "hover:drop-shadow-xl hover:shadow-yellow-500 hover:-translate-y-0.5 transition-all duration-200",
+            link: "https://steelhacks-xi.devpost.com/project-gallery",
+            tooltip: "Achieved first place at Pittsburgh's premier hackathon with an innovative solution built in just 36 hours. Demonstrated rapid prototyping skills and creative problem-solving under intense pressure alongside an amazing team.",
+            thumbnail: ["/steelhacks_tooltip_1.JPEG", "/steelhacks_tooltop_2.JPEG"]
+        },
+        {
+            text: "AI and modern web applications",
+            colors: "text-gray-800 font-bold drop-shadow-lg shadow-indigo-400",
+            hoverColors: "hover:drop-shadow-xl hover:shadow-indigo-500 hover:-translate-y-0.5 transition-all duration-200",
+            link: "#",
+            tooltip: "Passionate about exploring how artificial intelligence can enhance traditional software development. Currently building intelligent applications and researching ML-powered development workflows that make coding more efficient and intuitive.",
+            thumbnail: "/ai_tooltip.avif"
+        }
+    ];
+
     return (
         <div className="h-screen bg-gray-50 overflow-hidden">
             {/* Header Section */}
@@ -59,6 +136,20 @@ function Dashboard() {
                                     <a href="https://linkedin.com/in/caden-milne" target="_blank" rel="noopener noreferrer"
                                         className="text-gray-500 hover:text-gray-700 transition-colors">
                                         <img src="/LinkedInLogo.png" alt="LinkedIn" className="w-4 h-4" />
+                                    </a>
+                                    <a href="mailto:cadenmilne04@gmail.com" target="_blank" rel="noopener noreferrer"
+                                        className="text-gray-500 hover:text-gray-700 transition-colors">
+                                        <img src="/GmailLogo.png" alt="Gmail" className="w-4 h-4" />
+                                    </a>
+                                    <a href="https://leetcode.com/CadenMilne04" target="_blank" rel="noopener noreferrer"
+                                        className="text-gray-500 hover:text-gray-700 transition-colors">
+                                        <img src="/LeetCodeLogo.png" alt="LeetCode" className="w-4 h-4" />
+                                    </a>
+                                    <a href="https://x.com/caden_milne" target="_blank" rel="noopener noreferrer"
+                                        className="text-gray-500 hover:text-gray-700 transition-colors">
+                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                        </svg>
                                     </a>
                                 </div>
                             </div>
@@ -90,151 +181,214 @@ function Dashboard() {
                     {/* Main Content Grid */}
                     <div className="grid grid-cols-12 gap-6 flex-1 min-h-0">
                         {/* Left Sidebar - About & Stats */}
-                        <div className="col-span-4 flex flex-col space-y-4 overflow-hidden h-full">
-                            {/* About Section */}
-                            <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex-shrink-0">
-                                <h2 className="text-lg font-semibold text-gray-900 mb-2">About</h2>
-                                <p className="text-gray-700 leading-relaxed text-sm mb-3">
-                                    Full-stack software engineer with experience in web development, systems programming, and AI integration.
-                                    I build everything from enterprise web applications to low-level system utilities.
-                                </p>
-                                <p className="text-gray-700 leading-relaxed text-sm">
-                                    Currently focused on creating scalable web applications and exploring the intersection of AI and traditional software development.
-                                    This dashboard monitors the health and status of my deployed applications in real-time.
-                                </p>
-                            </div>
+                        <div className="col-span-4 h-[calc(100vh-200px)]">
+                            <div className="h-full flex flex-col space-y-3">
+                                {/* About Section - Enhanced */}
+                                <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex-shrink-0 relative">
+                                    <h2 className="text-lg font-semibold text-gray-900 mb-3">About</h2>
+                                    <div className="text-gray-700 leading-relaxed text-sm space-y-2">
+                                        <p>
+                                            I'm a passionate software engineer studying Computer Science at{' '}
+                                            <span 
+                                                className={`${aboutItems[0].colors} ${aboutItems[0].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
+                                                onClick={() => window.open(aboutItems[0].link, '_blank')}
+                                                onMouseEnter={(e) => handleAboutHover(aboutItems[0], e)}
+                                                onMouseMove={handleAboutMove}
+                                                onMouseLeave={handleAboutLeave}
+                                            >
+                                                {aboutItems[0].text} ↗
+                                            </span>, with experience building real-world applications through internships at{' '}
+                                            <span 
+                                                className={`${aboutItems[1].colors} ${aboutItems[1].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
+                                                onClick={() => window.open(aboutItems[1].link, '_blank')}
+                                                onMouseEnter={(e) => handleAboutHover(aboutItems[1], e)}
+                                                onMouseMove={handleAboutMove}
+                                                onMouseLeave={handleAboutLeave}
+                                            >
+                                                {aboutItems[1].text} ↗
+                                            </span>{' '}(where I{' '}
+                                            <span 
+                                                className={`${aboutItems[2].colors} ${aboutItems[2].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 inline-block`}
+                                                onClick={() => window.open(aboutItems[2].link, '_blank')}
+                                                onMouseEnter={(e) => handleAboutHover(aboutItems[2], e)}
+                                                onMouseMove={handleAboutMove}
+                                                onMouseLeave={handleAboutLeave}
+                                            >
+                                                {aboutItems[2].text} ↗
+                                            </span>) and{' '}
+                                            <span 
+                                                className={`${aboutItems[3].colors} ${aboutItems[3].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
+                                                onClick={() => window.open(aboutItems[3].link, '_blank')}
+                                                onMouseEnter={(e) => handleAboutHover(aboutItems[3], e)}
+                                                onMouseMove={handleAboutMove}
+                                                onMouseLeave={handleAboutLeave}
+                                            >
+                                                {aboutItems[3].text} ↗
+                                            </span>.
+                                        </p>
 
-                            {/* Quick Stats */}
-                            <div className="grid grid-cols-2 gap-3 flex-shrink-0">
-                                <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm text-center">
-                                    <h4 className="text-xl font-bold text-gray-900">{projectsData.length}</h4>
-                                    <p className="text-xs text-gray-600">Total Projects</p>
+                                        <p>
+                                            I won first place at{' '}
+                                            <span 
+                                                className={`${aboutItems[4].colors} ${aboutItems[4].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
+                                                onClick={() => window.open(aboutItems[4].link, '_blank')}
+                                                onMouseEnter={(e) => handleAboutHover(aboutItems[4], e)}
+                                                onMouseMove={handleAboutMove}
+                                                onMouseLeave={handleAboutLeave}
+                                            >
+                                                {aboutItems[4].text} ↗
+                                            </span>{' '}
+                                            and love exploring{' '}
+                                            <span 
+                                                className={`${aboutItems[5].colors} ${aboutItems[5].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
+                                                onMouseEnter={(e) => handleAboutHover(aboutItems[5], e)}
+                                                onMouseMove={handleAboutMove}
+                                                onMouseLeave={handleAboutLeave}
+                                            >
+                                                {aboutItems[5].text} ↗
+                                            </span>. This dashboard monitors all my deployed applications in real-time.
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm text-center">
-                                    <h4 className="text-xl font-bold text-green-600">
-                                        {Object.values(appStatuses).filter(s => s.status === 'healthy').length}
-                                    </h4>
-                                    <p className="text-xs text-gray-600">Live Apps</p>
-                                </div>
-                                <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm text-center">
-                                    <h4 className="text-xl font-bold text-blue-600">
-                                        {Object.values(appStatuses).filter(s => s.status === 'static').length}
-                                    </h4>
-                                    <p className="text-xs text-gray-600">Static Projects</p>
-                                </div>
-                                <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm text-center">
-                                    <h4 className="text-xl font-bold text-gray-600">
-                                        {Object.values(appStatuses).filter(s => s.status === 'demo').length}
-                                    </h4>
-                                    <p className="text-xs text-gray-600">Demo Videos</p>
-                                </div>
-                            </div>
 
-                            {/* Additional Info */}
-                            <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex-shrink-0">
-                                <h3 className="text-base font-semibold text-gray-900 mb-2">Technologies</h3>
-                                <div className="flex flex-wrap gap-1">
-                                    <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
-                                    <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Node.js</span>
-                                    <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">JavaScript</span>
-                                    <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">Python</span>
-                                    <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">C</span>
-                                    <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">Express</span>
-                                    <span className="px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded">MongoDB</span>
-                                    <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Tailwind</span>
+                                {/* Quick Stats - Condensed */}
+                                <div className="grid grid-cols-2 gap-2 flex-shrink-0">
+                                    <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm text-center">
+                                        <h4 className="text-lg font-bold text-gray-900">{projectsData.length}</h4>
+                                        <p className="text-xs text-gray-600">Projects</p>
+                                    </div>
+                                    <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm text-center">
+                                        <h4 className="text-lg font-bold text-green-600">
+                                            {Object.values(appStatuses).filter(s => s.status === 'healthy').length}
+                                        </h4>
+                                        <p className="text-xs text-gray-600">Live Apps</p>
+                                    </div>
+                                    <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm text-center">
+                                        <h4 className="text-lg font-bold text-blue-600">
+                                            {Object.values(appStatuses).filter(s => s.status === 'static').length}
+                                        </h4>
+                                        <p className="text-xs text-gray-600">Static</p>
+                                    </div>
+                                    <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm text-center">
+                                        <h4 className="text-lg font-bold text-gray-600">
+                                            {Object.values(appStatuses).filter(s => s.status === 'demo').length}
+                                        </h4>
+                                        <p className="text-xs text-gray-600">Demos</p>
+                                    </div>
+                                </div>
+
+                                {/* GitHub Activity Heatmap - Condensed */}
+                                <div className="flex-shrink-0">
+                                    <GitHubHeatmap username="CadenMilne04" />
+                                </div>
+
+                                {/* Technologies - Fit Content */}
+                                <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm flex-shrink-0">
+                                    <h3 className="text-sm font-semibold text-gray-900 mb-2">Technologies</h3>
+                                    <div className="flex flex-wrap gap-1">
+                                        <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
+                                        <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Node.js</span>
+                                        <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">JavaScript</span>
+                                        <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">Python</span>
+                                        <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">C</span>
+                                        <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">Express</span>
+                                        <span className="px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded">MongoDB</span>
+                                        <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Tailwind</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Right Main Content - Projects */}
-                        <div className="col-span-8 pb-4">
-                            <div className="bg-white rounded-lg border border-gray-200 shadow-sm h-[calc(100vh-200px)] flex flex-col">
-                                <div className="px-4 py-3 border-b border-gray-200 flex-shrink-0">
-                                    <h2 className="text-lg font-semibold text-gray-900">Projects & Applications</h2>
-                                </div>
-                                <div className="flex-1 overflow-y-auto custom-scrollbar">
-                                    <div className="divide-y divide-gray-200">
-                                        {projectsData.map((project, index) => {
-                                            const status = getProjectStatus(project.name);
-                                            return (
-                                                <div key={index} className="px-4 py-3 hover:bg-gray-50 transition-colors">
-                                                    <div className="flex items-center space-x-3">
-                                                        {/* Project Info - Left Side */}
-                                                        <div className="flex-1 min-w-0">
-                                                            <div className="flex items-center space-x-2 mb-1">
-                                                                <div className="flex items-center space-x-1">
-                                                                    <span className={`text-sm ${getStatusColor(status.status)}`}>
-                                                                        {getStatusIcon(status.status)}
-                                                                    </span>
-                                                                    <h3 className="text-base font-semibold text-gray-900">{project.name}</h3>
-                                                                </div>
-                                                                <span className={`px-2 py-0.5 text-xs rounded-full font-medium capitalize ${status.status === 'healthy' ? 'bg-green-100 text-green-800' :
-                                                                        status.status === 'static' ? 'bg-blue-100 text-blue-800' :
-                                                                            status.status === 'demo' ? 'bg-gray-100 text-gray-800' :
-                                                                                'bg-gray-100 text-gray-600'
-                                                                    }`}>
-                                                                    {status.status}
-                                                                </span>
-                                                            </div>
-
-                                                            <p className="text-sm text-gray-600 mb-2 line-clamp-1">{project.desc}</p>
-
-                                                            <div className="flex items-center space-x-4 text-xs text-gray-500">
-                                                                <div>
-                                                                    <span className="font-medium">Uptime:</span> {status.uptime}
-                                                                </div>
-                                                                <div>
-                                                                    <span className="font-medium">Response:</span> {status.responseTime}
-                                                                </div>
-                                                                <div className="flex items-center space-x-1">
-                                                                    <span className="font-medium">Tech:</span>
-                                                                    <div className="flex space-x-1">
-                                                                        {project.logos && project.logos.slice(0, 3).map((logo, i) => (
-                                                                            <img
-                                                                                key={i}
-                                                                                src={logo}
-                                                                                alt="Technology"
-                                                                                className="w-3 h-3 rounded opacity-70"
-                                                                            />
-                                                                        ))}
-                                                                        {project.logos && project.logos.length > 3 && (
-                                                                            <span className="text-gray-400">+{project.logos.length - 3}</span>
-                                                                        )}
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <a
-                                                                        href={project.link}
-                                                                        target="_blank"
-                                                                        rel="noopener noreferrer"
-                                                                        className="inline-flex items-center space-x-1 text-blue-600 hover:text-blue-800 transition-colors"
-                                                                    >
-                                                                        <span>View</span>
-                                                                        <img src={project.host} alt="Host" className="w-3 h-3" />
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        {/* Thumbnail - Right Side */}
-                                                        <div className="flex-shrink-0">
-                                                            <img
-                                                                src={project.img}
-                                                                alt={project.name}
-                                                                className="w-24 h-16 object-cover rounded border border-gray-200"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="col-span-8 h-[calc(100vh-200px)]">
+                            <ProjectsList 
+                                projects={projectsData}
+                                appStatuses={appStatuses}
+                                getProjectStatus={getProjectStatus}
+                            />
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* About Tooltip */}
+            {aboutTooltip && (
+                <div
+                    className="fixed z-50 bg-white border border-gray-200 rounded-lg shadow-xl pointer-events-none max-w-sm"
+                    style={{
+                        left: aboutTooltip.x + 15,
+                        top: aboutTooltip.y - 10,
+                    }}
+                >
+                    <div className="p-4">
+                        {/* Thumbnail - Handle different image types and layouts */}
+                        {aboutTooltip.thumbnail && (
+                            <div className="w-full mb-3">
+                                {Array.isArray(aboutTooltip.thumbnail) ? (
+                                    // Multiple images for SteelHacks - taller to show more of faces
+                                    <div className="grid grid-cols-2 gap-2">
+                                        {aboutTooltip.thumbnail.map((img, index) => (
+                                            <img
+                                                key={index}
+                                                src={img}
+                                                alt={`Thumbnail ${index + 1}`}
+                                                className="w-full h-28 object-cover rounded-md border border-gray-200"
+                                            />
+                                        ))}
+                                    </div>
+                                ) : (
+                                    // Single image - check if it's a square image that should be smaller
+                                    (() => {
+                                        const isSquareImage = aboutTooltip.thumbnail.includes('sei_tooltip') || 
+                                                            aboutTooltip.thumbnail.includes('ai_tooltip');
+                                        const isBlogImage = aboutTooltip.thumbnail.includes('cmublog_thumbnail');
+                                        const isBnyImage = aboutTooltip.thumbnail.includes('bny_tooltip');
+                                        
+                                        if (isSquareImage) {
+                                            return (
+                                                <img
+                                                    src={aboutTooltip.thumbnail}
+                                                    alt="Thumbnail"
+                                                    className="w-32 h-32 object-cover rounded-md border border-gray-200 mx-auto"
+                                                />
+                                            );
+                                        } else if (isBlogImage) {
+                                            return (
+                                                <img
+                                                    src={aboutTooltip.thumbnail}
+                                                    alt="Thumbnail"
+                                                    className="w-full h-auto object-cover rounded-md border border-gray-200"
+                                                />
+                                            );
+                                        } else if (isBnyImage) {
+                                            return (
+                                                <img
+                                                    src={aboutTooltip.thumbnail}
+                                                    alt="Thumbnail"
+                                                    className="w-full h-40 object-cover rounded-md border border-gray-200"
+                                                />
+                                            );
+                                        } else {
+                                            return (
+                                                <img
+                                                    src={aboutTooltip.thumbnail}
+                                                    alt="Thumbnail"
+                                                    className="w-full h-24 object-cover rounded-md border border-gray-200"
+                                                />
+                                            );
+                                        }
+                                    })()
+                                )}
+                            </div>
+                        )}
+                        
+                        {/* Description */}
+                        <p className="text-gray-700 text-sm leading-relaxed">
+                            {aboutTooltip.content}
+                        </p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
