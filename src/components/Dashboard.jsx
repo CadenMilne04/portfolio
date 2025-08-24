@@ -160,9 +160,19 @@ function Dashboard() {
                                             className="text-gray-500 hover:text-gray-700 transition-colors">
                                             <img src="/GmailLogo.png" alt="Gmail" className="w-4 h-4" />
                                         </a>
+                                        <a href="https://leetcode.com/CadenMilne04" target="_blank" rel="noopener noreferrer"
+                                            className="text-gray-500 hover:text-gray-700 transition-colors">
+                                            <img src="/LeetCodeLogo.png" alt="LeetCode" className="w-4 h-4" />
+                                        </a>
+                                        <a href="https://x.com/caden_milne" target="_blank" rel="noopener noreferrer"
+                                            className="text-gray-500 hover:text-gray-700 transition-colors">
+                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                            </svg>
+                                        </a>
                                     </div>
                                     <span className="text-gray-300">|</span>
-                                    <a href="https://drive.google.com/file/d/1p2inT9qGLjOhfvW28fB7kBGTrsj6kKWC/view?usp=sharing"
+                                    <a href="https://drive.google.com/file/d/1027lQHtvp1wHJ5AzLNjGzqTwo0ptdiIB/view"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors flex items-center space-x-1">
@@ -172,63 +182,13 @@ function Dashboard() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Status Overview */}
-                        <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm w-full md:w-auto">
-                            <div className="flex items-center justify-between mb-2">
-                                <h3 className="text-xs font-semibold text-gray-900">System Status</h3>
-                                <button
-                                    onClick={refreshStatuses}
-                                    className="p-1 hover:bg-gray-100 rounded transition-colors disabled:opacity-50"
-                                    disabled={loading}
-                                    title="Refresh status"
-                                >
-                                    <svg
-                                        className={`w-4 h-4 text-gray-600 hover:text-gray-800 transition-colors ${loading ? 'animate-spin' : ''}`}
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-
-                            {/* Mobile Layout - Stacked */}
-                            <div className="md:hidden text-xs text-gray-600 space-y-1">
-                                <p>Updated: {lastRefresh.toLocaleTimeString()}</p>
-                                <div className="flex items-center justify-between">
-                                    <span className="flex items-center">
-                                        <span className="text-green-500">●</span>
-                                        <span className="ml-1">{Object.values(appStatuses).filter(s => s.status === 'healthy').length} Live</span>
-                                    </span>
-                                    <span>{Object.values(appStatuses).filter(s => s.status === 'static').length} Apps</span>
-                                    <span>{Object.values(appStatuses).filter(s => s.status === 'demo').length} Demos</span>
-                                </div>
-                            </div>
-
-                            {/* Desktop Layout - Original */}
-                            <div className="hidden md:block text-xs text-gray-600">
-                                <p>Last updated: {lastRefresh.toLocaleTimeString()}</p>
-                                <p className="mt-1">
-                                    <span className="text-green-500">●</span> {Object.values(appStatuses).filter(s => s.status === 'healthy').length} Live
-                                    <span className="ml-2 text-gray-600">{Object.values(appStatuses).filter(s => s.status === 'static').length} Apps</span>
-                                    <span className="ml-2 text-gray-600">{Object.values(appStatuses).filter(s => s.status === 'demo').length} Demos</span>
-                                </p>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Main Content Grid */}
                     <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-6 flex-1 min-h-0">
                         {/* Left Sidebar - About & Stats */}
                         <div className="lg:col-span-4 min-h-0">
-                            <div className="flex flex-col lg:h-[calc(100vh-200px)] lg:max-h-[calc(100vh-200px)] lg:overflow-hidden gap-4 lg:gap-0">
+                            <div className="flex flex-col lg:h-[calc(100vh-200px)] lg:max-h-[calc(100vh-200px)] lg:overflow-hidden gap-4">
                                 {/* About Section - Enhanced */}
                                 <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex-shrink-0 relative">
                                     <h2 className="text-lg font-semibold text-gray-900 mb-3">About</h2>
@@ -373,59 +333,9 @@ function Dashboard() {
                                     )}
                                 </div>
 
-                                {/* Uniform Flexible Gap 1 */}
-                                <div className="lg:flex-1 lg:min-h-3"></div>
-
-                                {/* Quick Stats - One Line with Individual Squares */}
-                                <div className="flex gap-2 flex-shrink-0">
-                                    <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm text-center flex-1">
-                                        <h4 className="text-sm font-bold text-gray-900">{projectsData.length}</h4>
-                                        <p className="text-xs text-gray-600">Projects</p>
-                                    </div>
-                                    <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm text-center flex-1">
-                                        <h4 className="text-sm font-bold text-green-600">
-                                            {Object.values(appStatuses).filter(s => s.status === 'healthy').length}
-                                        </h4>
-                                        <p className="text-xs text-gray-600">Live</p>
-                                    </div>
-                                    <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm text-center flex-1">
-                                        <h4 className="text-sm font-bold text-blue-600">
-                                            {Object.values(appStatuses).filter(s => s.status === 'static').length}
-                                        </h4>
-                                        <p className="text-xs text-gray-600">Apps</p>
-                                    </div>
-                                    <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm text-center flex-1">
-                                        <h4 className="text-sm font-bold text-gray-600">
-                                            {Object.values(appStatuses).filter(s => s.status === 'demo').length}
-                                        </h4>
-                                        <p className="text-xs text-gray-600">Demos</p>
-                                    </div>
-                                </div>
-
-                                {/* Uniform Flexible Gap 2 */}
-                                <div className="lg:flex-1 lg:min-h-3"></div>
-
                                 {/* GitHub Activity Heatmap - Flexible */}
                                 <div className="flex-shrink-0">
                                     <GitHubHeatmap username="CadenMilne04" />
-                                </div>
-
-                                {/* Uniform Flexible Gap 3 */}
-                                <div className="lg:flex-1 lg:min-h-3"></div>
-
-                                {/* Technologies - Fit Content */}
-                                <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm flex-shrink-0">
-                                    <h3 className="text-sm font-semibold text-gray-900 mb-2">Technologies</h3>
-                                    <div className="flex flex-wrap gap-1">
-                                        <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
-                                        <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Node.js</span>
-                                        <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">JavaScript</span>
-                                        <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">Python</span>
-                                        <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">C</span>
-                                        <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded">Express</span>
-                                        <span className="px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded">MongoDB</span>
-                                        <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded">Tailwind</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
