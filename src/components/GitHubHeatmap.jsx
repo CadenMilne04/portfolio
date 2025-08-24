@@ -125,13 +125,16 @@ function GitHubHeatmap({ username = 'CadenMilne04' }) {
         setTooltip(null);
     };
 
-    // Calculate how many weeks we can fit (approximately 25-30 weeks based on container width)
-    const maxWeeks = 26; // Adjust this based on your container width
+    // Display exactly 6 months (26 weeks) worth of data
+    const maxWeeks = 26;
     
     // Start from today and go backwards to get the most recent data
     const today = new Date();
     const startDate = new Date(today);
-    startDate.setDate(startDate.getDate() - (maxWeeks * 7 - 1));
+    startDate.setDate(startDate.getDate() - (maxWeeks * 7));
+    // Ensure we start from a Sunday
+    const dayOfWeek = startDate.getDay();
+    startDate.setDate(startDate.getDate() - dayOfWeek);
     
     // Filter contributions to show only the recent period ending with today
     const recentContributions = contributions.filter(contribution => {
@@ -150,15 +153,14 @@ function GitHubHeatmap({ username = 'CadenMilne04' }) {
     weeks.forEach((week, weekIndex) => {
         if (week.length > 0) {
             const firstDayOfWeek = new Date(week[0].date);
-            const month = firstDayOfWeek.toLocaleDateString('en-US', { month: 'short' });
+            const lastDayOfWeek = new Date(week[week.length - 1].date);
             
-            // Only add month label if it's different from the previous week or it's the first week
-            const prevMonth = weekIndex > 0 && weeks[weekIndex - 1].length > 0 
-                ? new Date(weeks[weekIndex - 1][0].date).toLocaleDateString('en-US', { month: 'short' })
-                : '';
-            
-            if (month !== prevMonth || weekIndex === 0) {
-                monthLabels[weekIndex] = month;
+            // Check if this week contains the first day of a month
+            for (let day = firstDayOfWeek; day <= lastDayOfWeek; day.setDate(day.getDate() + 1)) {
+                if (day.getDate() === 1 || (weekIndex === 0 && day.getDate() <= 7)) {
+                    monthLabels[weekIndex] = day.toLocaleDateString('en-US', { month: 'short' });
+                    break;
+                }
             }
         }
     });
@@ -199,26 +201,35 @@ function GitHubHeatmap({ username = 'CadenMilne04' }) {
                 {/* Heatmap Grid - Recent weeks only, no scroll */}
                 <div className="mb-2">
                     {/* Month labels */}
-                    <div className="flex space-x-0.5 justify-end mb-1">
-                        {weeks.map((week, weekIndex) => (
-                            <div key={weekIndex} className="w-2.5 text-center">
-                                <span className="text-xs text-gray-500">
-                                    {monthLabels[weekIndex] || ''}
-                                </span>
-                            </div>
-                        ))}
+                    <div className="relative h-5 mb-1">
+                        <div className="absolute left-0 right-0 flex">
+                            {weeks.map((week, weekIndex) => {
+                                if (monthLabels[weekIndex]) {
+                                    return (
+                                        <div 
+                                            key={weekIndex} 
+                                            className="absolute text-xs text-gray-500"
+                                            style={{ left: `${weekIndex * 12}px` }} // 12px = square width (10px) + gap (2px)
+                                        >
+                                            {monthLabels[weekIndex]}
+                                        </div>
+                                    );
+                                }
+                                return null;
+                            })}
+                        </div>
                     </div>
                     
                     {/* Contribution squares */}
-                    <div className="flex space-x-0.5 justify-end">
+                    <div className="flex space-x-0.5 justify-start">
                         {weeks.map((week, weekIndex) => (
-                            <div key={weekIndex} className="flex flex-col space-y-0.5">
+                            <div key={weekIndex} className="flex flex-col space-y-0.5 w-[10px]">
                                 {week.map((day, dayIndex) => {
                                     const date = new Date(day.date);
                                     return (
                                         <div
                                             key={dayIndex}
-                                            className={`w-2.5 h-2.5 rounded-sm ${getContributionColor(day.count)} hover:ring-1 hover:ring-blue-300 transition-all cursor-pointer`}
+                                            className={`w-[10px] h-[10px] rounded-sm ${getContributionColor(day.count)} hover:ring-1 hover:ring-blue-300 transition-all cursor-pointer`}
                                             onClick={() => handleDayClick(day.date)}
                                             onMouseEnter={(e) => handleDayHover(day, e)}
                                             onMouseLeave={handleDayLeave}

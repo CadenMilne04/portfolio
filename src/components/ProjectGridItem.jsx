@@ -92,7 +92,7 @@ function ProjectGridItem({ project, isHighlighted }) {
 
     return (
         <div
-            className={`px-4 lg:px-6 py-4 cursor-pointer transition-all duration-200 hover:bg-gray-50 ${isHovered ? 'shadow-lg scale-[1.01]' : ''}`}
+            className={`px-4 lg:px-6 py-4 cursor-pointer transition-all duration-200 hover:bg-gray-50 ${isHovered ? 'shadow-md' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => window.open(project.link, '_blank')}
@@ -209,12 +209,12 @@ function ProjectGridItem({ project, isHighlighted }) {
 
                 {/* Preview Column - Made Bigger */}
                 <div className="col-span-2">
-                    <div className="relative group">
+                    <div className="relative group z-0">
                         <img
                             src={project.img}
                             alt={project.name}
                             className={`w-32 h-20 object-cover rounded-lg border-2 transition-all duration-300 ${isHovered
-                                    ? 'border-blue-500 shadow-xl scale-110 brightness-110'
+                                    ? 'border-blue-500 shadow-lg brightness-110'
                                     : 'border-gray-200 hover:border-blue-300 hover:shadow-md'
                                 }`}
                         />
@@ -241,7 +241,7 @@ function ProjectGridItem({ project, isHighlighted }) {
                         </button>
 
                         {showDropdown && (
-                            <div className="absolute right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
+                            <div className="absolute top-full right-0 mt-1 bg-white rounded-lg shadow-xl border border-gray-200 z-[9999]">
                                 <div className="py-1">
                                     <button
                                         onClick={(e) => {
@@ -249,7 +249,7 @@ function ProjectGridItem({ project, isHighlighted }) {
                                             window.open(project.link, '_blank');
                                             setShowDropdown(false);
                                         }}
-                                        className="block w-full text-right px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors whitespace-nowrap"
+                                        className="block w-full text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors whitespace-nowrap"
                                     >
                                         {getActionLabel()}
                                     </button>
@@ -259,7 +259,7 @@ function ProjectGridItem({ project, isHighlighted }) {
                                             // TODO: Implement read more functionality
                                             setShowDropdown(false);
                                         }}
-                                        className="block w-full text-right px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors whitespace-nowrap"
+                                        className="block w-full text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors whitespace-nowrap"
                                     >
                                         Read More
                                     </button>
