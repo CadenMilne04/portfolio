@@ -17,7 +17,7 @@ function Dashboard() {
         loadAppStatuses();
         // Auto-refresh every 30 seconds
         const interval = setInterval(loadAppStatuses, 30000);
-        
+
         return () => {
             clearInterval(interval);
         };
@@ -145,7 +145,7 @@ function Dashboard() {
                             />
                             <div>
                                 <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">Caden Milne</h1>
-                                <p className="text-sm md:text-base text-gray-600">Software Engineer & Full-Stack Developer</p>
+                                <p className="text-sm md:text-base text-gray-600">Software Engineer</p>
                                 <div className="flex items-center space-x-3 mt-1">
                                     <div className="flex space-x-3">
                                         <a href="https://github.com/CadenMilne04" target="_blank" rel="noopener noreferrer"
@@ -160,22 +160,12 @@ function Dashboard() {
                                             className="text-gray-500 hover:text-gray-700 transition-colors">
                                             <img src="/GmailLogo.png" alt="Gmail" className="w-4 h-4" />
                                         </a>
-                                        <a href="https://leetcode.com/CadenMilne04" target="_blank" rel="noopener noreferrer"
-                                            className="text-gray-500 hover:text-gray-700 transition-colors">
-                                            <img src="/LeetCodeLogo.png" alt="LeetCode" className="w-4 h-4" />
-                                        </a>
-                                        <a href="https://x.com/caden_milne" target="_blank" rel="noopener noreferrer"
-                                            className="text-gray-500 hover:text-gray-700 transition-colors">
-                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                            </svg>
-                                        </a>
                                     </div>
                                     <span className="text-gray-300">|</span>
-                                    <a href="https://drive.google.com/file/d/1027lQHtvp1wHJ5AzLNjGzqTwo0ptdiIB/view" 
-                                       target="_blank" 
-                                       rel="noopener noreferrer"
-                                       className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors flex items-center space-x-1">
+                                    <a href="https://drive.google.com/file/d/1p2inT9qGLjOhfvW28fB7kBGTrsj6kKWC/view?usp=sharing"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors flex items-center space-x-1">
                                         <span>Resume</span>
                                         <span>↗</span>
                                     </a>
@@ -193,22 +183,22 @@ function Dashboard() {
                                     disabled={loading}
                                     title="Refresh status"
                                 >
-                                    <svg 
+                                    <svg
                                         className={`w-4 h-4 text-gray-600 hover:text-gray-800 transition-colors ${loading ? 'animate-spin' : ''}`}
-                                        fill="none" 
-                                        stroke="currentColor" 
+                                        fill="none"
+                                        stroke="currentColor"
                                         viewBox="0 0 24 24"
                                     >
-                                        <path 
-                                            strokeLinecap="round" 
-                                            strokeLinejoin="round" 
-                                            strokeWidth={2} 
-                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                                         />
                                     </svg>
                                 </button>
                             </div>
-                            
+
                             {/* Mobile Layout - Stacked */}
                             <div className="md:hidden text-xs text-gray-600 space-y-1">
                                 <p>Updated: {lastRefresh.toLocaleTimeString()}</p>
@@ -221,7 +211,7 @@ function Dashboard() {
                                     <span>{Object.values(appStatuses).filter(s => s.status === 'demo').length} Demos</span>
                                 </div>
                             </div>
-                            
+
                             {/* Desktop Layout - Original */}
                             <div className="hidden md:block text-xs text-gray-600">
                                 <p>Last updated: {lastRefresh.toLocaleTimeString()}</p>
@@ -245,7 +235,7 @@ function Dashboard() {
                                     <div className="text-gray-700 leading-relaxed text-sm space-y-2">
                                         <p>
                                             I'm a passionate software engineer studying Computer Science at{' '}
-                                            <span 
+                                            <span
                                                 className={`${aboutItems[0].colors} ${aboutItems[0].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
                                                 onClick={(e) => {
                                                     if (window.innerWidth >= 1024) {
@@ -260,7 +250,7 @@ function Dashboard() {
                                             >
                                                 {aboutItems[0].text} ↗
                                             </span>, with experience building real-world applications through internships at{' '}
-                                            <span 
+                                            <span
                                                 className={`${aboutItems[1].colors} ${aboutItems[1].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
                                                 onClick={(e) => {
                                                     if (window.innerWidth >= 1024) {
@@ -275,7 +265,7 @@ function Dashboard() {
                                             >
                                                 {aboutItems[1].text} ↗
                                             </span>{' '}(where I{' '}
-                                            <span 
+                                            <span
                                                 className={`${aboutItems[2].colors} ${aboutItems[2].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 inline-block`}
                                                 onClick={(e) => {
                                                     if (window.innerWidth >= 1024) {
@@ -290,7 +280,7 @@ function Dashboard() {
                                             >
                                                 {aboutItems[2].text} ↗
                                             </span>) and{' '}
-                                            <span 
+                                            <span
                                                 className={`${aboutItems[3].colors} ${aboutItems[3].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
                                                 onClick={(e) => {
                                                     if (window.innerWidth >= 1024) {
@@ -309,7 +299,7 @@ function Dashboard() {
 
                                         <p>
                                             I won first place at{' '}
-                                            <span 
+                                            <span
                                                 className={`${aboutItems[4].colors} ${aboutItems[4].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
                                                 onClick={(e) => {
                                                     if (window.innerWidth >= 1024) {
@@ -325,7 +315,7 @@ function Dashboard() {
                                                 {aboutItems[4].text} ↗
                                             </span>{' '}
                                             and love exploring{' '}
-                                            <span 
+                                            <span
                                                 className={`${aboutItems[5].colors} ${aboutItems[5].hoverColors} cursor-pointer transition-all duration-200 hover:scale-105 hover:drop-shadow-sm inline-block`}
                                                 onClick={(e) => {
                                                     if (window.innerWidth >= 1024) {
@@ -371,7 +361,7 @@ function Dashboard() {
                                             <p className="text-gray-700 text-xs leading-relaxed mb-3">
                                                 {mobileTooltip.content}
                                             </p>
-                                            <a 
+                                            <a
                                                 href={mobileTooltip.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -443,7 +433,7 @@ function Dashboard() {
                         {/* Right Main Content - Projects */}
                         <div className="lg:col-span-8 min-h-0">
                             <div className="h-full lg:h-[calc(100vh-200px)]">
-                                <ProjectsList 
+                                <ProjectsList
                                     projects={projectsData}
                                     appStatuses={appStatuses}
                                     getProjectStatus={getProjectStatus}
@@ -482,11 +472,11 @@ function Dashboard() {
                                 ) : (
                                     // Single image - check if it's a square image that should be smaller
                                     (() => {
-                                        const isSquareImage = aboutTooltip.thumbnail.includes('sei_tooltip') || 
-                                                            aboutTooltip.thumbnail.includes('ai_tooltip');
+                                        const isSquareImage = aboutTooltip.thumbnail.includes('sei_tooltip') ||
+                                            aboutTooltip.thumbnail.includes('ai_tooltip');
                                         const isBlogImage = aboutTooltip.thumbnail.includes('cmublog_thumbnail');
                                         const isBnyImage = aboutTooltip.thumbnail.includes('bny_tooltip');
-                                        
+
                                         if (isSquareImage) {
                                             return (
                                                 <img
@@ -524,7 +514,7 @@ function Dashboard() {
                                 )}
                             </div>
                         )}
-                        
+
                         {/* Description */}
                         <p className="text-gray-700 text-sm leading-relaxed">
                             {aboutTooltip.content}

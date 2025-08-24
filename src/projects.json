@@ -1,5 +1,42 @@
 [
     {
+        "name": "GPT in C",
+        "desc": "GPT-style Implementation of Google's 'Attention is All You Need' transformer + custom inference engine.",
+        "img": "/attention.png",
+        "logos": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"
+        ],
+        "host": "/TriviaTokLogo.png"
+    },
+    {
+        "name": "NES Emulator",
+        "desc": "Nintendo Entertainment System emulator. Which emulates the 6502 processor, ppu, and I/O.",
+        "img": "/NesEmuImage.png",
+        "logos": [
+            "https://user-images.githubusercontent.com/25181517/192599922-3a8ceb1c-ff1d-40bc-b73c-99ea1182d8ad.png"
+        ],
+        "link": "https://github.com/CadenMilne04/nes_emulator",
+        "host": "/GitHubLogo.png"
+    },
+    {
+        "name": "Compiler for Subset of Java",
+        "desc": "Built using yacc, bison, and flex. Code generation for programming language with java-like syntax.",
+        "img": "/compiler.png",
+        "logos": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"
+        ],
+        "host": "/TriviaTokLogo.png"
+    },
+    {
+        "name": "TCP Implementation in C",
+        "desc": "GPT-style Implementation of Google's 'Attention is All You Need' encoder + inference engine.",
+        "img": "/tcp.png",
+        "logos": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"
+        ],
+        "host": "/TriviaTokLogo.png"
+    },
+    {
         "name": "TriviaTok",
         "desc": "Tiktok style doom-scrollable trivia. AI question generation with Google's Gemini API",
         "img": "/TriviaTokImage.png",
@@ -11,29 +48,6 @@
         ],
         "link": "https://triviatok.us/",
         "host": "/TriviaTokLogo.png"
-    },
-    {
-        "name": "Workout App",
-        "desc": "Web application with active users to track workout data.",
-        "img": "/WorkoutAppImage.png",
-        "logos": [
-            "https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png",
-            "https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png",
-            "https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png",
-            "https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png"
-        ],
-        "link": "https://workout-app-ugjg.onrender.com/",
-        "host": "/GitHubLogo.png"
-    },
-    {
-        "name": "NES Emulator",
-        "desc": "Nintendo Entertainment System emulator. Which emulates the 6502 processor, ppu, and I/O.",
-        "img": "/NesEmuImage.png",
-        "logos": [
-            "https://user-images.githubusercontent.com/25181517/192599922-3a8ceb1c-ff1d-40bc-b73c-99ea1182d8ad.png"
-        ],
-        "link": "https://github.com/CadenMilne04/nes_emulator",
-        "host": "/GitHubLogo.png"
     },
     {
         "name": "Dopa-Mirror",

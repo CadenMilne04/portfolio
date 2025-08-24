@@ -109,30 +109,29 @@ function ProjectGridItem({ project, status, isHighlighted }) {
                             className="w-full h-full object-cover rounded border border-gray-200"
                         />
                     </div>
-                    
+
                     {/* Content Column */}
                     <div className="flex-1 flex flex-col justify-between py-1">
                         {/* Title and Status Row */}
                         <div className="flex items-start justify-between">
                             <div className="flex-1 min-w-0 pr-2">
-                                <h3 className={`text-base font-bold transition-all duration-200 leading-tight ${
-                                    isHovered 
-                                        ? 'text-blue-600 transform scale-105' 
+                                <h3 className={`text-base font-bold transition-all duration-200 leading-tight ${isHovered
+                                        ? 'text-blue-600 transform scale-105'
                                         : 'text-blue-700 hover:text-blue-600'
-                                }`}>
+                                    }`}>
                                     {project.name} ↗
                                 </h3>
                                 <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed mt-0.5">
                                     {project.desc}
                                 </p>
                             </div>
-                            
+
                             {/* Status Badge */}
                             <div className="flex-shrink-0">
                                 {getStatusBadge()}
                             </div>
                         </div>
-                        
+
                         {/* Tech Stack */}
                         <div className="flex flex-wrap gap-1 mt-2">
                             {project.logos && project.logos.slice(0, 4).map((logo, i) => (
@@ -163,11 +162,10 @@ function ProjectGridItem({ project, status, isHighlighted }) {
                 {/* Project Info Column */}
                 <div className="col-span-4">
                     <div className="space-y-2">
-                        <h3 className={`text-lg font-bold transition-all duration-200 ${
-                            isHovered 
-                                ? 'text-blue-600 transform scale-105' 
+                        <h3 className={`text-lg font-bold transition-all duration-200 ${isHovered
+                                ? 'text-blue-600 transform scale-105'
                                 : 'text-blue-700 hover:text-blue-600'
-                        }`}>
+                            }`}>
                             {project.name}
                         </h3>
                         <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
@@ -187,20 +185,17 @@ function ProjectGridItem({ project, status, isHighlighted }) {
                                 <img
                                     src={logo}
                                     alt="Technology"
-                                    className={`w-6 h-6 rounded transition-all duration-200 ${
-                                        isHovered ? 'scale-110 drop-shadow-md' : 'hover:scale-105'
-                                    }`}
+                                    className={`w-6 h-6 rounded transition-all duration-200 ${isHovered ? 'scale-110 drop-shadow-md' : 'hover:scale-105'
+                                        }`}
                                 />
                                 {/* Add subtle glow to tech logos on hover */}
-                                <div className={`absolute inset-0 rounded transition-opacity duration-200 ${
-                                    isHovered ? 'opacity-100' : 'opacity-0'
-                                } bg-blue-400/20 blur-sm -z-10`}></div>
+                                <div className={`absolute inset-0 rounded transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'
+                                    } bg-blue-400/20 blur-sm -z-10`}></div>
                             </div>
                         ))}
                         {project.logos && project.logos.length > 4 && (
-                            <div className={`w-6 h-6 rounded bg-gray-200 flex items-center justify-center text-xs font-medium transition-all duration-200 ${
-                                isHovered ? 'bg-blue-100 text-blue-700 scale-110' : 'text-gray-600'
-                            }`}>
+                            <div className={`w-6 h-6 rounded bg-gray-200 flex items-center justify-center text-xs font-medium transition-all duration-200 ${isHovered ? 'bg-blue-100 text-blue-700 scale-110' : 'text-gray-600'
+                                }`}>
                                 +{project.logos.length - 4}
                             </div>
                         )}
@@ -214,14 +209,13 @@ function ProjectGridItem({ project, status, isHighlighted }) {
                             src={project.img}
                             alt={project.name}
                             className={`w-32 h-20 object-cover rounded-lg border-2 transition-all duration-300 ${isHovered
-                                    ? 'border-blue-500 shadow-xl scale-110 brightness-110'
-                                    : 'border-gray-200 hover:border-blue-300 hover:shadow-md'
+                                ? 'border-blue-500 shadow-xl scale-110 brightness-110'
+                                : 'border-gray-200 hover:border-blue-300 hover:shadow-md'
                                 }`}
                         />
                         {/* Add a subtle glow effect */}
-                        <div className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${
-                            isHovered ? 'opacity-100' : 'opacity-0'
-                        } bg-blue-400/10 blur-xl -z-10`}></div>
+                        <div className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'
+                            } bg-blue-400/10 blur-xl -z-10`}></div>
                     </div>
                 </div>
 
