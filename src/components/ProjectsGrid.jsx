@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import ProjectGridItem from './ProjectGridItem';
 
-function ProjectsGrid({ projects, appStatuses, getProjectStatus }) {
+function ProjectsGrid({ projects }) {
   const [activeFilters, setActiveFilters] = useState(['all']);
 
   // Toggle filter function
@@ -22,41 +22,35 @@ function ProjectsGrid({ projects, appStatuses, getProjectStatus }) {
 
   // Filter projects to only show selected types
   const filteredProjects = useMemo(() => {
-    const projectsWithStatus = projects.map(project => ({
-      ...project,
-      statusData: getProjectStatus(project.name)
-    }));
-
     if (activeFilters.includes('all') || activeFilters.length === 0) {
-      return projectsWithStatus;
+      return projects;
     }
 
     // Only show projects that match the selected filters
-    return projectsWithStatus.filter(project => {
-      const status = project.statusData.status;
+    return projects.filter(project => {
       return activeFilters.some(filter => {
         switch (filter) {
           case 'live':
-            return status === 'healthy';
+            return project.status === 'healthy';
           case 'static':
-            return status === 'static';
+            return project.status === 'static';
           case 'videos':
-            return status === 'demo';
+            return project.status === 'demo';
           default:
             return false;
         }
       });
     });
-  }, [projects, appStatuses, activeFilters, getProjectStatus]);
+  }, [projects, activeFilters]);
 
   const getFilterCount = (filterType) => {
     switch (filterType) {
       case 'live':
-        return Object.values(appStatuses).filter(s => s.status === 'healthy').length;
+        return projects.filter(p => p.status === 'healthy').length;
       case 'static':
-        return Object.values(appStatuses).filter(s => s.status === 'static').length;
+        return projects.filter(p => p.status === 'static').length;
       case 'videos':
-        return Object.values(appStatuses).filter(s => s.status === 'demo').length;
+        return projects.filter(p => p.status === 'demo').length;
       default:
         return projects.length;
     }

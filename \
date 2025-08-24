@@ -6,7 +6,7 @@
         "logos": [
             "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"
         ],
-        "link": "https://github.com/CadenMilne04/c-transformer",
+        "host": "/TriviaTokLogo.png",
         "status": "static"
     },
     {
@@ -17,6 +17,7 @@
             "https://user-images.githubusercontent.com/25181517/192599922-3a8ceb1c-ff1d-40bc-b73c-99ea1182d8ad.png"
         ],
         "link": "https://github.com/CadenMilne04/nes_emulator",
+        "host": "/GitHubLogo.png",
         "status": "static"
     },
     {
@@ -26,7 +27,7 @@
         "logos": [
             "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"
         ],
-        "link": "https://github.com/CadenMilne04/mini-java-compiler",
+        "host": "/TriviaTokLogo.png",
         "status": "static"
     },
     {
@@ -36,7 +37,7 @@
         "logos": [
             "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"
         ],
-        "link": "https://github.com/CadenMilne04/mini-tcp",
+        "host": "/TriviaTokLogo.png",
         "status": "static"
     },
     {
@@ -60,9 +61,10 @@
         "logos": [
             "https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png",
             "https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png",
-            "https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png"
+            "https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png",
         ],
-        "link": "https://albumai.cadenmilne.com/",
+        "link": "https://triviatok.us/",
+        "host": "/TriviaTokLogo.png",
         "status": "healthy"
     },
     {

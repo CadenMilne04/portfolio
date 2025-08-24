@@ -1,12 +1,10 @@
 import React from 'react';
 import ProjectsGrid from './ProjectsGrid';
 
-function ProjectsList({ projects, appStatuses, getProjectStatus }) {
+function ProjectsList({ projects }) {
   return (
     <ProjectsGrid 
       projects={projects}
-      appStatuses={appStatuses}
-      getProjectStatus={getProjectStatus}
     />
   );
 }

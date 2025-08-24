@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { getApplicationStatuses } from '../services/appStatusService';
+import React, { useState } from 'react';
 import projectsData from '../projects.json';
 import ProjectsList from './ProjectsList';
 import GitHubHeatmap from './GitHubHeatmap';
@@ -7,44 +6,8 @@ import ZeldaEasterEgg from './ZeldaEasterEgg';
 import EasterEggHint from './EasterEggHint';
 
 function Dashboard() {
-    const [appStatuses, setAppStatuses] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [lastRefresh, setLastRefresh] = useState(new Date());
     const [aboutTooltip, setAboutTooltip] = useState(null);
-    const [mobileTooltip, setMobileTooltip] = useState(null);
-
-    useEffect(() => {
-        loadAppStatuses();
-        // Auto-refresh every 30 seconds
-        const interval = setInterval(loadAppStatuses, 30000);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, []);
-
-    const loadAppStatuses = async () => {
-        try {
-            const statuses = await getApplicationStatuses();
-            setAppStatuses(statuses);
-            setLastRefresh(new Date());
-        } catch (error) {
-            console.error('Failed to load app statuses:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const refreshStatuses = () => {
-        setLoading(true);
-        loadAppStatuses();
-    };
-
-    const getProjectStatus = (projectName) => {
-        return appStatuses[projectName] || { status: 'unknown', uptime: 'N/A', responseTime: 'N/A' };
-    };
-
-    const handleAboutHover = (item, event) => {
+    const [mobileTooltip, setMobileTooltip] = useState(null);    const handleAboutHover = (item, event) => {
         setAboutTooltip({
             x: event.clientX,
             y: event.clientY,
@@ -345,8 +308,6 @@ function Dashboard() {
                             <div className="h-full lg:h-[calc(100vh-200px)]">
                                 <ProjectsList
                                     projects={projectsData}
-                                    appStatuses={appStatuses}
-                                    getProjectStatus={getProjectStatus}
                                 />
                             </div>
                         </div>

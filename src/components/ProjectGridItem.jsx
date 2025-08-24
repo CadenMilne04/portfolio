@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-function ProjectGridItem({ project, status, isHighlighted }) {
+function ProjectGridItem({ project, isHighlighted }) {
     const [isHovered, setIsHovered] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
@@ -20,9 +20,9 @@ function ProjectGridItem({ project, status, isHighlighted }) {
     }, []);
 
     const getActionLabel = () => {
-        if (status.status === 'healthy') {
+        if (project.status === 'healthy') {
             return 'Launch App';
-        } else if (status.status === 'demo') {
+        } else if (project.status === 'demo') {
             return 'Watch Demo';
         } else {
             return 'View Code';
@@ -30,20 +30,20 @@ function ProjectGridItem({ project, status, isHighlighted }) {
     };
 
     const getStatusBadge = () => {
-        if (status.status === 'healthy') {
+        if (project.status === 'healthy') {
             return (
                 <div className="flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
                     <span>Live</span>
                 </div>
             );
-        } else if (status.status === 'static') {
+        } else if (project.status === 'static') {
             return (
                 <div className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 border border-gray-200">
                     <span>App</span>
                 </div>
             );
-        } else if (status.status === 'demo') {
+        } else if (project.status === 'demo') {
             return (
                 <div className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 border border-gray-200">
                     <span>Demo</span>

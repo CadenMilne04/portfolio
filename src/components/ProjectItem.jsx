@@ -1,5 +1,4 @@
 import React from 'react';
-import { getStatusColor, getStatusIcon } from '../services/appStatusService';
 
 function ProjectItem({ project, status }) {
   return (
@@ -10,7 +9,6 @@ function ProjectItem({ project, status }) {
           <div className="flex items-center space-x-2 mb-1">
             <div className="flex items-center space-x-1">
               <span className={`text-sm ${getStatusColor(status.status)}`}>
-                {getStatusIcon(status.status)}
               </span>
               <h3 className="text-base font-semibold text-gray-900">{project.name}</h3>
             </div>
