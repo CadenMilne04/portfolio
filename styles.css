@@ -1,0 +1,75 @@
+body {
+    margin: auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.h {
+    display: flex;
+    margin: 0;
+    align-items: baseline;
+    justify-content: space-between
+}
+
+.h h1 {
+    display: flex;
+    align-items: baseline;
+}
+
+.h span {
+    font-size: 12pt;
+    margin-left: .5rem;
+    font-weight: normal;
+}
+
+.right-stack {
+    /* remove flex layout */
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Make the image float to the right */
+.right-stack img {
+    float: right;       /* image floats right */
+    margin-left: 1rem;  /* space between image and text */
+    margin-bottom: 0.5rem; /* spacing if text wraps underneath */
+    height: 14rem;
+    width: auto;
+    object-fit: cover;
+}
+
+/* Optional: clear floats after the container so following content doesn’t wrap */
+.right-stack::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.right-stack li {
+    list-style-type: disc;      /* standard bullet */
+    list-style-position: outside; /* bullet outside the text */
+    margin-left: 1.5em;         /* indent like a normal ul */
+    margin-bottom: 0.5em;       /* spacing between items */
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+@media (max-width: 480px) {
+    body {
+        margin: auto;
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .h h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+}

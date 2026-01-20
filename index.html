@@ -1,13 +1,172 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="wave.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <html lang=en>
+    <meta charset=utf-8>
     <title>Caden Milne's Portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
-  </body>
-</html>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="coffee.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="h">
+        <h1>
+            <div>Caden Milne</div>
+            <span>Software Engineer</span>
+        </h1>
+        <p>this site fits in <a href="https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/"
+                target="_blank">under
+                14kb</a>!</p>
+    </div>
+
+    <div class="right-stack">
+        <div>
+            <img src="cadenmilne.jpg" alt="Headshot of Caden Milne">
+            <h2>About Me</h2>
+            <p>
+                I build high-performance solutions to solve complex problems.
+                My work has been <a
+                    href="https://devpost.com/software/triviatok?_gl=1*1mirvpr*_gcl_au*MjExMTA2NzUzMC4xNzY4OTQxMjY0*_ga*MTk5NDE1MjI4NC4xNzY4OTQxMjY0*_ga_0YHJK3Y10M*czE3Njg5NDEyNjMkbzEkZzEkdDE3Njg5NDEyNjkkajU0JGwwJGgw"
+                    target="_blank">awarded</a>, and <a href="https://www.sei.cmu.edu/authors/caden-milne/"
+                    target="_blank">published</a>.
+            </p>
+
+            <p>
+                If you are a potential employer consider checking out my
+                <a href="https://drive.google.com/file/d/1p2inT9qGLjOhfvW28fB7kBGTrsj6kKWC/view?usp=sharing"
+                    target="_blank">resumé</a>, or
+                <a href="https://www.linkedin.com/in/cadenmilne04/" target="_blank">LinkedIn</a>.
+                I can also be reached at my personal email
+                <a href="mailto:cadenmilne04@gmail.com">cadenmilne04@gmail.com</a>.
+            </p>
+
+            <p>Current interests:</p>
+
+            <li>Go (programming language)</li>
+            <li>Functional Programming (haskell + elixir)</li>
+            <li>Vim + Productivity Workflows (see my <a href="https://github.com/CadenMilne04/dotfiles"
+                    target="_blank">dotfiles</a>)</li>
+            <li>Linux, Docker, and Distributed Systems</li>
+            <li>Automation</li>
+            <li>Music Production, Skateboarding, Coffee</li>
+        </div>
+    </div>
+
+    <h2>Work Experience</h2>
+
+    <div>
+        <h3>Bank of New York (BNY)</h3>
+        <p>I spent the summer of 2025 in Lake Mary, FL working at the <a
+                href="https://www.bny.com/corporate/global/en.html" target="_blank">Bank of New York</a>.</p>
+
+        <p>Accomplishments:</p>
+        <ul>
+            <li>Built and shipped new features for an enterprise app used by 5,000+ employees, focusing on making it
+                faster and easier to use.</li>
+            <li>Wrote Python scripts using internal AI tools to boost test coverage by ~20%, which helped catch bugs
+                before they hit production.</li>
+            <li>Shipped 20+ frontend and backend features and fixes to production with zero rollbacks.</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Carnegie Mellon University - SEI</h3>
+        <p>From May 2024 to May 2025 I worked at <a href="https://www.sei.cmu.edu/" target="_blank">Carnegie Mellon's
+                Software
+                Engineering Institute</a> in Pittsburgh, PA.</p>
+
+        <p>Accomplishments:</p>
+        <ul>
+            <li>Automated upgrades and releases across five applications, cutting release time in half and removing
+                human
+                error from the process.</li>
+            <li>Helped improve and clarify the SEI CERT C Coding Standards, contributing guidance around secure C
+                development.</li>
+            <li>Built and shipped a scalable automation tool for SSL certificate renewals, saving engineers ~2 hours
+                every
+                renewal cycle.</li>
+            <li>Designed user-friendly CLI tools that made it much faster to access system data, reducing log retrieval
+                time
+                by 70%.</li>
+            <li>Set up CI/CD pipelines for both new and legacy projects, speeding up deployments by about 40%.</li>
+            <li>Added extensive error handling to a custom Rust-based installer, covering 90% more failure cases.</li>
+            <li>Refactored and standardized large legacy codebases across most projects, making them easier to maintain
+                and
+                faster for new engineers to onboard.</li>
+        </ul>
+    </div>
+
+    <h2>Projects</h2>
+    <p>A list of projects that I am proud of. Most of these can be found on my <a
+            href="https://github.com/CadenMilne04">github</a>.</p>
+
+    <h3>GPT-style Transformer</h3>
+    <p>
+        A transformer-based language model encoder built entirely from scratch in C,
+        focusing on low-level machine learning and inference without external libraries.
+        <strong>Tools:</strong> C, Linear Algebra, AI/ML
+    </p>
+    <ul>
+        <li>Implemented a GPT-style transformer encoder capable of training on thousands of sentences.</li>
+        <li>Built a custom inference engine for next-word prediction without using ML frameworks.</li>
+    </ul>
+
+    <h3>Nintendo Entertainment System Emulator</h3>
+    <p>
+        A fully featured Nintendo Entertainment System emulator with complete CPU instruction support
+        and cross-platform compatibility.
+        <strong>Tools:</strong> Rust
+    </p>
+    <ul>
+        <li>Implemented all 151 official and 105 unofficial MOS 6502 CPU opcodes for full instruction coverage.</li>
+        <li>Designed a portable architecture supporting Windows, macOS, and Linux.</li>
+    </ul>
+
+    <h3>Compiler for a Subset of Java</h3>
+    <p>
+        A compiler for a subset of the Java programming language, including lexical analysis,
+        parsing, and execution.
+        <strong>Tools:</strong> C, C++, Flex, Bison, Yacc
+    </p>
+    <ul>
+        <li>Built a compiler capable of parsing and executing a subset of Java.</li>
+        <li>Developed lexical and syntax analyzers with Flex and Bison, passing all custom test cases.</li>
+    </ul>
+
+    <h3>TCP Implementation</h3>
+    <p>
+        A low-level implementation of the TCP protocol focusing on reliability and standards compliance.
+        <strong>Tools:</strong> C, Wireshark
+    </p>
+    <ul>
+        <li>Implemented core TCP functionality to support reliable data transfer.</li>
+        <li>Tested across simulated network conditions with packet loss and multiple operating systems.</li>
+    </ul>
+
+    <h3>TriviaTok</h3>
+    <p>
+        A social media trivia platform that generates and serves large volumes of questions on demand.
+        <strong>Tools:</strong> React, Express, Node.js, MongoDB. <a href="https://triviatok.cadenmilne.com">Check it
+            out</a>!
+    </p>
+    <ul>
+        <li>Built a full-stack web application generating thousands of trivia questions using AI.</li>
+        <li>Designed a scalable REST API with persistent data storage.</li>
+    </ul>
+
+    <h3>AlbumAI</h3>
+    <p>
+        A music history tool that lets you explore the key albums of any genre you like.
+        <strong>Tools:</strong> React, Express, Node.js, SQLite. <a href="https://albumai.cadenmilne.com">Check it
+            out</a>!
+    </p>
+    <ul>
+        <li>Build an interactive web frontend to explore albums over time.</li>
+        <li>Leveraged AI to generate album relationship data and populate the album database for caching.</li>
+    </ul>
+
+    <footer>
+        <p><em>Last Updated: 01/20/2026</em></p>
+    </footer>
+</body>
